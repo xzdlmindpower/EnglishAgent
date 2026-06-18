@@ -105,7 +105,7 @@
 <div class="container">
     <div class="header">
         <h1>🧽 英语特工</h1>
-        <div class="sub">⭐ <span id="nicknameDisplay">Eric</span>，坚持下去，你会成为英语特工</div>
+        <div class="sub">⭐ 坚持下去，你会成为英语特工</div>
     </div>
     <div class="tabs">
         <div class="tab active" data-tab="words">📖 词汇背诵</div>
@@ -426,15 +426,6 @@ function showToast(msg, detail) {
     document.body.appendChild(t); setTimeout(() => t.remove(), 2500);
 }
 
-// ======================== 昵称系统 ========================
-function getNickname() { return localStorage.getItem('sp_nickname') || 'Eric'; }
-function setNickname(name) { localStorage.setItem('sp_nickname', name||'Eric'); updateNicknameDisplay(); document.title = getNickname()+'的英语特工 · v1.8'; }
-function updateNicknameDisplay() {
-    const n = getNickname();
-    const el = document.getElementById('nicknameDisplay');
-    if (el) el.textContent = n;
-}
-
 function showModal(title, bodyHtml) {
     document.getElementById('modalContainer').innerHTML =
         `<div class="modal-overlay" id="modalOverlay"><div class="modal"><button class="modal-close" onclick="closeModal()">&times;</button><div class="card-title" style="margin-bottom:12px">${title}</div><div>${bodyHtml}</div></div></div>`;
@@ -491,40 +482,39 @@ function trackSession(correct) {
 function resetSession() { _sessionCount = 0; _sessionCorrect = 0; _sessionStart = Date.now(); }
 
 function getEncourage(q) {
-    const n = getNickname();
     if (_sessionCount > 0 && _sessionCount % 10 === 0) {
         const milestones = [
-            n+'，哇哦！已经'+_sessionCount+'张了，比奇堡最棒的海绵！<span class="emoji">🌟</span>',
-            n+'，菠萝屋为你骄傲！'+_sessionCount+'张达成！<span class="emoji">🎉</span>',
-            n+'，蟹老板都想雇你了！'+_sessionCount+'张！<span class="emoji">💰</span>',
-            n+'，小蜗都惊呆了！'+_sessionCount+'张！喵~<span class="emoji">😺</span>',
-            n+'，海绵宝宝的裤头都闪亮了！'+_sessionCount+'张！<span class="emoji">✨</span>',
+            '<span class="emoji">🪸</span> 哇哦！已经'+_sessionCount+'张了，比奇堡最棒的海绵！<span class="emoji">🌟</span>',
+            '<span class="emoji">🍍</span> 菠萝屋为你骄傲！'+_sessionCount+'张达成！<span class="emoji">🎉</span>',
+            '<span class="emoji">🦀</span> 蟹老板都想雇你了！'+_sessionCount+'张！<span class="emoji">💰</span>',
+            '<span class="emoji">🐌</span> 小蜗都惊呆了！'+_sessionCount+'张！喵~<span class="emoji">😺</span>',
+            '<span class="emoji">⭐</span> 海绵宝宝的裤头都闪亮了！'+_sessionCount+'张！<span class="emoji">✨</span>',
         ];
         return milestones[Math.floor(Math.random()*milestones.length)];
     }
     if (q >= 5) {
         const easys = [
-            n+'，太棒啦！你比派大星还聪明！<span class="emoji">⭐</span>',
-            n+'，轻松拿下！珊迪都想和你比赛！<span class="emoji">🥇</span>',
-            n+'，水母田的冠军就是你！<span class="emoji">🏆</span>',
-            n+'，比奇堡摇滚明星！太厉害了！<span class="emoji">🎵</span>',
+            '<span class="emoji">🚀</span> 太棒啦！你比派大星还聪明！<span class="emoji">⭐</span>',
+            '<span class="emoji">💪</span> 轻松拿下！珊迪都想和你比赛！<span class="emoji">🥇</span>',
+            '<span class="emoji">🌈</span> 水母田的冠军就是你！<span class="emoji">🏆</span>',
+            '<span class="emoji">🎸</span> 比奇堡摇滚明星！太厉害了！<span class="emoji">🎵</span>',
         ];
         return easys[Math.floor(Math.random()*easys.length)];
     }
     if (q >= 3) {
         const oks = [
-            n+'，不错哦！海绵宝宝给你竖大拇指！<span class="emoji">😊</span>',
-            n+'，稳稳命中！继续加油！<span class="emoji">💛</span>',
-            n+'，比奇堡的阳光为你闪耀！<span class="emoji">🌊</span>',
-            n+'，干得漂亮！蟹黄堡秘方慢慢掌握了！<span class="emoji">🍔</span>',
+            '<span class="emoji">👍</span> 不错哦！海绵宝宝给你竖大拇指！<span class="emoji">😊</span>',
+            '<span class="emoji">🎯</span> 稳稳命中！继续加油！<span class="emoji">💛</span>',
+            '<span class="emoji">☀️</span> 比奇堡的阳光为你闪耀！<span class="emoji">🌊</span>',
+            '<span class="emoji">👏</span> 干得漂亮！蟹黄堡秘方慢慢掌握了！<span class="emoji">🍔</span>',
         ];
         return oks[Math.floor(Math.random()*oks.length)];
     }
     const retrys = [
-        n+'，没关系！海绵宝宝也经常搞砸！再来！<span class="emoji">💪</span>',
-        n+'，吹个泡泡放松一下，下次一定行！<span class="emoji">🫧</span>',
-        n+'，海绵吸水一样慢慢吸收！别急！<span class="emoji">💛</span>',
-        n+'，章鱼哥也学了很久呢！坚持就是胜利！<span class="emoji">🎵</span>',
+        '<span class="emoji">🤗</span> 没关系！海绵宝宝也经常搞砸！再来！<span class="emoji">💪</span>',
+        '<span class="emoji">🫧</span> 吹个泡泡放松一下，下次一定行！<span class="emoji">🫧</span>',
+        '<span class="emoji">🧽</span> 海绵吸水一样慢慢吸收！别急！<span class="emoji">💛</span>',
+        '<span class="emoji">🐠</span> 章鱼哥也学了很久呢！坚持就是胜利！<span class="emoji">🎵</span>',
     ];
     return retrys[Math.floor(Math.random()*retrys.length)];
 }
@@ -769,8 +759,6 @@ function buildFlashcardModule(containerId, mode) {
                 <select id="fc_${mode}" class="filter-select"><option value="">全部章节</option>${allChapters.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
                 <select id="fp_${mode}" class="filter-select"><option value="">全部星级</option>${allPris.map(p=>`<option value="${p}">${p}星</option>`).join('')}</select>
                 <button id="af_${mode}" class="btn small">筛选并开始</button>
-                <button id="rf_${mode}" class="btn small" style="background:#ECEFF1;color:#546E7A">🔄 重置</button>
-                <button id="pf_${mode}" class="btn small" style="background:#E8F5E9;color:#2E7D32">🖨️ 打印单词</button>
                 <span id="cnt_${mode}" style="font-size:0.8rem;color:#607D8B">共 ${allWords.length} 张</span>
             </div>
             <div id="ca_${mode}"></div>`;
@@ -821,19 +809,6 @@ function buildFlashcardModule(containerId, mode) {
         document.getElementById(`fc_${mode}`).addEventListener('change', smartNarrow);
         document.getElementById(`fp_${mode}`).addEventListener('change', smartNarrow);
         document.getElementById(`af_${mode}`).addEventListener('click', () => refresh());
-        document.getElementById(`rf_${mode}`).addEventListener('click', () => {
-            document.getElementById(`fm_${mode}`).value = 'due';
-            document.getElementById(`fg_${mode}`).value = '';
-            document.getElementById(`fc_${mode}`).value = '';
-            document.getElementById(`fp_${mode}`).value = '';
-            smartNarrow();
-            refresh();
-        });
-        document.getElementById(`pf_${mode}`).addEventListener('click', async () => {
-            const pfWords = await loadList();
-            if (!pfWords.length) { showToast('⚠️ 当前筛选结果为空'); return; }
-            printWordList(pfWords);
-        });
         await refresh();
     })();
 }
@@ -958,17 +933,10 @@ function renderGrammarPanel() {
                 <select id="gm_ch" class="filter-select"><option value="">全部章节</option>${chapters.map(c=>`<option value="${esc(String(c))}">${esc(String(c))}</option>`).join('')}</select>
                 <select id="gm_df" class="filter-select"><option value="">全部难度</option>${diffs.map(d=>`<option value="${d}">${d}星</option>`).join('')}</select>
                 <button id="gm_af" class="btn small">筛选并开始</button>
-                <button id="gm_rf" class="btn small" style="background:#ECEFF1;color:#546E7A">🔄 重置</button>
                 <span id="gm_cnt" style="font-size:0.8rem;color:#607D8B"></span>
             </div>
             <div id="gm_ca"></div>`;
         document.getElementById('gm_af').addEventListener('click', () => refresh());
-        document.getElementById('gm_rf').addEventListener('click', () => {
-            document.getElementById('gm_mv').value = 'due';
-            document.getElementById('gm_ch').value = '';
-            document.getElementById('gm_df').value = '';
-            refresh();
-        });
         await refresh();
     })();
 }
@@ -1200,15 +1168,14 @@ async function renderReportPanel() {
     }).join('');
 
     // 智能建议
-    const n = getNickname();
     let suggestion = '';
     if (today.todayCards === 0 && today.streak > 0) {
-        suggestion = '<span class="suggest-icon">⚠️</span> '+n+'，今天还没刷词哦！快去保持连续打卡记录吧！<br><span style="color:#FF7043;font-weight:bold">建议现在刷 '+today.goal+' 张！</span>';
+        suggestion = '<span class="suggest-icon">⚠️</span> 今天还没刷词哦！快去保持连续打卡记录吧！<br><span style="color:#FF7043;font-weight:bold">建议现在刷 '+today.goal+' 张！</span>';
     } else if (today.todayCards >= today.goal) {
-        suggestion = '<span class="suggest-icon">🎉</span> '+n+'，今日目标已达成！比奇堡最勤奋的海绵！<br>连续<span style="color:#FF7043;font-weight:bold">'+today.streak+'天</span>打卡，太厉害了！';
+        suggestion = '<span class="suggest-icon">🎉</span> 今日目标已达成！比奇堡最勤奋的海绵！<br>连续<span style="color:#FF7043;font-weight:bold">'+today.streak+'天</span>打卡，太厉害了！';
     } else if (today.todayCards > 0) {
         const left = today.goal - today.todayCards;
-        suggestion = '<span class="suggest-icon">💪</span> '+n+'，还差 <span style="color:#FF7043;font-weight:bold">'+left+'张</span> 完成今日目标！加油！';
+        suggestion = '<span class="suggest-icon">💪</span> 还差 <span style="color:#FF7043;font-weight:bold">'+left+'张</span> 完成今日目标！加油！';
     }
     if (dueCount > 10) {
         suggestion += '<br><span class="suggest-icon">📅</span> 有 <span style="color:#E65100;font-weight:bold">'+dueCount+'张</span> 到期卡片待复习，建议优先处理！';
@@ -1280,12 +1247,6 @@ async function renderReportPanel() {
 async function renderDataPanel() {
     const container = document.getElementById('dataPanel');
     container.innerHTML =
-    '<div class="card"><div class="card-title">👤 个性化</div>' +
-        '<div style="display:flex;align-items:center;gap:8px">' +
-            '<span style="font-size:0.85rem">昵称：</span>' +
-            '<input id="nickInput" type="text" value="'+esc(getNickname())+'" style="padding:4px 8px;border:1px solid #B0BEC5;border-radius:6px;width:120px;font-size:0.85rem" maxlength="10">' +
-            '<button class="btn small" onclick="setNickname(document.getElementById(\'nickInput\').value);showToast(\'已更新\')">💾 保存</button>' +
-        '</div></div>' +
     '<div class="card"><div class="card-title">💾 备份与恢复</div>' +
         '<div class="btn-group" style="justify-content:flex-start">' +
             '<button class="btn" onclick="fullBackup()">📤 一键备份</button>' +
@@ -1341,83 +1302,6 @@ async function fullRestore(file) {
         } catch (err) { showToast('恢复失败：' + err.message); }
     };
     reader.readAsText(file);
-}
-function _pEsc(s) { if(!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function printWordList(words) {
-    // 收集筛选信息作为标题
-    const fgVal = document.querySelector('.filter-select[id^="fg_"]')?.value || '';
-    const fcVal = document.querySelector('.filter-select[id^="fc_"]')?.value || '';
-    const fpVal = document.querySelector('.filter-select[id^="fp_"]')?.value || '';
-    const titleParts = [fgVal, fcVal, fpVal ? fpVal+'星' : ''].filter(Boolean);
-    const pageTitle = titleParts.length ? titleParts.join(' · ') : '单词表';
-    const now = new Date();
-    const ts = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-
-    let h = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+_pEsc(pageTitle)+'</title>';
-    h += '<style>';
-    h += '@page{size:A4;margin:8mm 8mm;}';
-    h += 'body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;margin:0;padding:0;color:#222;font-size:8pt;line-height:1.35;}';
-    h += '.page-header{text-align:center;border-bottom:1.5px solid #0277BD;padding-bottom:4px;margin-bottom:6px;}';
-    h += '.page-header h1{font-size:13pt;color:#0277BD;margin:0 0 2px 0;}';
-    h += '.page-header .sub{font-size:7.5pt;color:#607D8B;}';
-    h += '.w-item{display:flex;gap:8px;border-bottom:0.5px dashed #ccc;padding:3px 0;page-break-inside:avoid;}';
-    h += '.w-left{flex:0 0 155px;display:flex;flex-direction:column;justify-content:center;}';
-    h += '.w-right{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;}';
-    h += '.w-top{display:flex;align-items:baseline;gap:4px;}';
-    h += '.w-id{font-size:6.5pt;color:#90A4AE;}';
-    h += '.w-en{font-size:10.5pt;font-weight:bold;color:#01579B;}';
-    h += '.w-phonetic{font-size:7.5pt;color:#78909C;}';
-    h += '.w-pos{font-size:7pt;color:#1565C0;}';
-    h += '.w-stars{font-size:7pt;color:#F57F17;}';
-    h += '.w-cn{font-size:9pt;font-weight:bold;color:#333;margin-bottom:1px;}';
-    h += '.w-mnemonic{font-size:7.5pt;color:#00695C;}';
-    h += '.w-example{font-size:7pt;color:#555;}';
-    h += '.w-example .cn{color:#777;}';
-    h += '</style></head><body>';
-    h += '<div class="page-header"><h1>'+_pEsc(pageTitle)+'</h1>';
-    h += '<div class="sub">共 '+words.length+' 词 · '+ts+'</div></div>';
-    for(let i=0;i<words.length;i++) {
-        const w = words[i];
-        const id = w.id || w['单词ID'] || (i+1);
-        const word = w.word || w['英文'] || '';
-        const prn = w.pronunciation || w['音标'] || '';
-        const pos = w.partOfSpeech || w['词性'] || '';
-        const cn = w.meaning || w['中文'] || '';
-        const mn = w.mnemonic || w['记忆法'] || '';
-        const ex = w.example || w['例句'] || '';
-        const pri = w.priority || w['星级'] || 0;
-        const stars = '⭐'.repeat(Math.min(5, parseInt(pri)||0));
-
-        h += '<div class="w-item"><div class="w-left">';
-        h += '<div class="w-id">'+_pEsc(id)+'</div>';
-        h += '<div class="w-top"><span class="w-en">'+_pEsc(word)+'</span>';
-        if(stars) h += '<span class="w-stars">'+stars+'</span></div>';
-        if(prn) h += '<div class="w-phonetic">'+_pEsc(prn)+(pos?' · '+_pEsc(pos):'')+'</div>';
-        else if(pos) h += '<div class="w-pos">'+_pEsc(pos)+'</div>';
-        h += '</div><div class="w-right">';
-        h += '<div class="w-cn">'+_pEsc(cn)+'</div>';
-        if(mn) h += '<div class="w-mnemonic">🧠 '+_pEsc(mn)+'</div>';
-        if(ex) {
-            const parts = ex.split(/【译】/);
-            h += '<div class="w-example">'+_pEsc(parts[0]||ex);
-            if(parts[1]) h += ' 【译】'+_pEsc(parts[1]);
-            h += '</div>';
-        }
-        h += '</div></div>';
-    }
-    h += '<div style="text-align:center;margin-top:20px;padding:12px 0;">';
-    h += '<button onclick="window.print()" style="padding:10px 36px;font-size:14px;background:#2E7D32;color:#fff;border:none;border-radius:8px;cursor:pointer;">🖨️ 打印 / 保存为PDF</button>';
-    h += '<p style="margin-top:8px;font-size:10px;color:#999;">点击按钮，在打印对话框中选择「另存为PDF」即可下载</p>';
-    h += '</div>';
-    h += '</body></html>';
-    try {
-        const blob = new Blob([h], {type:'text/html;charset=utf-8'});
-        const url = URL.createObjectURL(blob);
-        const win = window.open(url, '_blank');
-        if (!win) { showToast('⚠️', '弹窗被拦截，请允许弹窗后重试'); return; }
-    } catch(e) {
-        showToast('❌', '打印失败: '+e.message);
-    }
 }
 async function resetProgress() {
     if (!confirm('重置个人进度（笔记/刷题记录）？官方数据不变')) return;
@@ -1478,10 +1362,7 @@ async function exportXLSX(type) {
     const wb = XLSX.utils.book_new();
     const names = {words:'单词库',essays:'范文库',grammar:'语法库'};
     XLSX.utils.book_append_sheet(wb, ws, names[type]);
-    const d = new Date();
-    const ts = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+'_'+
-               String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
-    XLSX.writeFile(wb, names[type] + '_' + ts + '.xlsx');
+    XLSX.writeFile(wb, names[type] + '_' + new Date().toISOString().slice(0,10) + '.xlsx');
 }
 
 function downloadTemplate(type) {
@@ -1606,8 +1487,6 @@ function switchTab(tab) {
     if (panelRenderers[tab]) panelRenderers[tab]();
 }
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
-updateNicknameDisplay();
-document.title = getNickname() + '的英语特工 · v1.8';
 switchTab('words');
 </script>
 </body>
